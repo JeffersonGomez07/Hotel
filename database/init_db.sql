@@ -13,11 +13,6 @@ CREATE TABLE dbo.usuarios (
 );
 
 
-UPDATE dbo.usuarios
-SET rol = 'admin'
-WHERE email = 'jeffermp40@gmail.com';
-
-
 CREATE TABLE fechas_bloqueadas (
     id INT PRIMARY KEY IDENTITY(1,1),
     fecha DATE NOT NULL,
