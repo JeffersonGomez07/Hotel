@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Panel de Administración - Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/dashboard.css') }}" />
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+  <div class="usuario-links">
+    {% if session.get('usuario_id') %}
+      <a href="{{ url_for('auth.logout') }}">Cerrar sesión</a>
+    {% else %}
+      <a href="{{ url_for('auth.login') }}">Iniciar sesión</a>
+      <a href="{{ url_for('auth.registro') }}">Regístrate</a>
+    {% endif %}
+  </div>
+
+  <header>
+    <h1>Hotel Paraíso</h1>
+    <nav>
+      <div class="nav-izquierda">
+        {% if session.get('usuario_rol') == 'admin' %}
+          <a href="{{ url_for('admin.dashboard') }}">Panel de administración</a>
+        {% endif %}
+        <a href="{{ url_for('admin.gestionar_reservas') }}">Gestionar Reservaciones</a>
+        <a href="{{ url_for('admin.gestionar_fechas') }}">Gestionar Fechas</a>
+        <a href="{{ url_for('admin.gestionar_habitaciones') }}">Gestionar Habitaciones</a>
+      
+      </div>
+    </nav>
+  </header>
+
+  <main class="home-main">
+    <h2 class="intro-title">Panel de Administración</h2>
+
+    <section class="intro">
+      <h3>Estadísticas Generales</h3>
+      <ul>
+        <li><strong>Total de Reservaciones:</strong> {{ total_reservaciones }}</li>
+        <li><strong>Total de Habitaciones:</strong> {{ total_habitaciones }}</li>
+        <li><strong>Reservas Pendientes:</strong> {{ reservas_pendientes }}</li>
+        <li><strong>Reservas Confirmadas:</strong> {{ reservas_confirmadas }}</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Hotel Paraíso. Todos los derechos reservados.</p>
+  </footer>
+
+</body>
+</html>

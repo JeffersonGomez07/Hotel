@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Editar Reservación - Panel de Administración</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/editar_reservacion.css') }}" />
+</head>
+<body>
+  <header>
+    <h1>Editar Reservación</h1>
+    <nav>
+      <a href="{{ url_for('adminGestionarReservaciones') }}">Volver atras</a>
+    </nav>
+  </header>
+
+  <main>
+    <form method="POST" action="{{ url_for('admin_editar_reserva', id=reserva.id) }}">
+      <label>Nombre cliente:
+        <input type="text" name="nombre_cliente" value="{{ reserva.nombre_cliente }}" required />
+      </label><br />
+
+      <label>Email:
+        <input type="email" name="email" value="{{ reserva.email }}" required />
+      </label><br />
+
+      <label>Fecha llegada:
+        <input type="date" name="fecha_llegada" value="{{ reserva.fecha_llegada }}" required />
+      </label><br />
+
+      <label>Fecha salida:
+        <input type="date" name="fecha_salida" value="{{ reserva.fecha_salida }}" required />
+      </label><br />
+
+      <label>Tipo habitación:
+        <input type="text" name="tipo_habitacion" value="{{ reserva.tipo_habitacion }}" required />
+      </label><br />
+
+      <label>Adultos:
+        <input type="number" name="adultos" value="{{ reserva.adultos }}" min="1" required />
+      </label><br />
+
+      <label>Niños:
+        <input type="number" name="ninos" value="{{ reserva.ninos }}" min="0" required />
+      </label><br />
+
+      <button type="submit" class="btn">Guardar Cambios</button>
+    </form>
+  </main>
+</body>
+</html>

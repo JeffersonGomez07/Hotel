@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hotel Paraíso - Inicio</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <!-- Enlaces de usuario en esquina superior derecha -->
+  <div class="usuario-links">
+    {% if session.get('usuario_id') %}
+      <a href="{{ url_for('auth.logout') }}">Cerrar sesión</a>
+    {% else %}
+      <a href="{{ url_for('auth.login') }}">Iniciar sesión</a>
+      <a href="{{ url_for('auth.registro') }}">Regístrate</a>
+    {% endif %}
+  </div>
+
+  <header>
+    <h1>Hotel Paraíso</h1>
+    <nav>
+      <div class="nav-izquierda">
+        <a href="{{ url_for('public.index') }}">Inicio</a>
+        <a href="{{ url_for('public.habitaciones') }}">Habitaciones</a>
+        <a href="{{ url_for('reservacion.reservaciones') }}">Reservaciones</a>
+        <a href="{{ url_for('public.servicios') }}">Servicios</a>
+        <a href="{{ url_for('public.contacto') }}">Contacto</a>
+        <a href="{{ url_for('public.nosotros') }}">Nosotros</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="home-main">
+    <!-- Mensajes flash -->
+    <div id="flash-messages" data-messages='{{ get_flashed_messages(with_categories=true) | tojson }}'></div>
+
+    <!-- Hero -->
+    <section class="hero">
+      <h2>Bienvenido a Hotel Paraíso</h2>
+      <p>Tu lugar ideal para descansar y disfrutar</p>
+      <a class="btn" href="{{ url_for('reservacion.reservaciones') }}">Reserva ahora</a>
+    </section>
+
+    <!-- Habitaciones -->
+    <section class="intro">
+      <h3>Nuestras habitaciones</h3>
+      <p>Ofrecemos habitaciones cómodas y lujosas para una estancia inolvidable.</p>
+      <a href="{{ url_for('public.habitaciones') }}">Ver habitaciones</a>
+    </section>
+
+    <!-- Servicios -->
+    <section class="intro">
+      <h3>Servicios exclusivos</h3>
+      <p>Descubre todo lo que tenemos para ti: piscina, gimnasio, spa y más.</p>
+      <a href="{{ url_for('public.servicios') }}">Conoce nuestros servicios</a>
+    </section>
+
+    <!-- Galería -->
+    <section class="galeria-inicio">
+      <h3>Galería</h3>
+      <p>Descubre un vistazo a nuestras instalaciones</p>
+      <div class="galeria-grid">
+        <img src="{{ url_for('static', filename='images/lobby.jpg') }}" alt="Lobby del hotel">
+        <img src="{{ url_for('static', filename='images/piscina.avif') }}" alt="Piscina al aire libre">
+        <img src="{{ url_for('static', filename='images/restaurante.avif') }}" alt="Restaurante">
+      </div>
+      <a class="btn" href="{{ url_for('public.galeria') }}">Ver galería completa</a>
+    </section>
+
+    <!-- Ubicación -->
+    <section class="ubicacion">
+      <h3>¿Dónde estamos?</h3>
+      <p>Hotel Paraíso se encuentra en una ubicación privilegiada con acceso a transporte y atracciones turísticas.</p>
+      
+      <div class="mapa">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3876.474637804837!2d-84.08550628464846!3d9.928069490158186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e35df01933e5%3A0xa3e5b6f57b1b8df2!2sSan%20José%2C%20Costa%20Rica!5e0!3m2!1ses!2scr!4v1690145873335!5m2!1ses!2scr"
+          width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+      </div>
+
+      <div class="indicaciones">
+        <h4>¿Cómo llegar?</h4>
+        <p>A 20 minutos del Aeropuerto Internacional Juan Santamaría y a 5 minutos del centro de San José. Cerca de paradas de bus, taxi y Uber.</p>
+      </div>
+
+      <div class="atracciones">
+        <h4>Zonas turísticas cercanas:</h4>
+        <ul>
+          <li>Teatro Nacional - 7 min caminando</li>
+          <li>Museo del Oro - 6 min</li>
+          <li>Parque Central - 5 min</li>
+          <li>Mercado Central - 4 min</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Hotel Paraíso. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+</body>
+</html>

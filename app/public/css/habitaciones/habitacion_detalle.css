@@ -1,0 +1,77 @@
+/* Contenedor principal */
+.habitacion-detalle {
+  max-width: 900px;
+  margin: 50px auto 80px auto;
+  padding: 0 20px;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+/* Título principal */
+.habitacion-detalle h2 {
+  color: #004d99;
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+}
+
+/* Galería de imágenes */
+.galeria-habitacion {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.galeria-habitacion img {
+  width: 280px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.galeria-habitacion img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+
+/* Texto descriptivo */
+.habitacion-detalle p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #555;
+}
+
+/* Precio destacado */
+.price {
+  font-weight: 700;
+  color: #ffb347;
+  font-size: 1.4rem;
+  margin-bottom: 30px;
+}
+
+/* Botón reservar */
+.btn {
+  background-color: #ffb347;
+  color: #004d99;
+  padding: 15px 35px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover, .btn:focus {
+  background-color: #e69c29;
+  outline: none;
+}

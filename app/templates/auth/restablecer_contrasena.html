@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Recuperar Contraseña - Hotel Paraíso</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/auth/cambiar_contrasena.css') }}" />
+
+</head>
+<body>
+  <main class="main">
+    <h2>Recuperar Contraseña</h2>
+    <p>Ingresa tu correo electrónico para recibir las instrucciones de recuperación.</p>
+    
+    <form method="POST" action="{{ url_for('auth.restablecer_contrasena') }}">
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="email" name="email" required placeholder="tucorreo@ejemplo.com" />
+      
+      <button type="submit">Restablecer Contraseña</button>
+    </form>
+  </main>
+</body>
+</html>

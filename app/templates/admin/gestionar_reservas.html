@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gestionar Reservaciones - Panel de Administración</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/gestionar_reservas.css') }}" />
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+  <div class="usuario-links">
+    {% if session.get('usuario_id') %}
+      <a href="{{ url_for('auth.logout') }}">Cerrar sesión</a>
+    {% else %}
+      <a href="{{ url_for('auth.login') }}">Iniciar sesión</a>
+      <a href="{{ url_for('auth.registro') }}">Regístrate</a>
+    {% endif %}
+  </div>
+
+  <header>
+    <h1>Hotel Paraíso</h1>
+    <nav>
+      <div class="nav-izquierda">
+        {% if session.get('usuario_rol') == 'admin' %}
+          <a href="{{ url_for('admin.dashboard') }}">Panel de administración</a>
+        {% endif %}
+        <a href="{{ url_for('admin.gestionar_reservas') }}">Gestionar Reservaciones</a>
+        <a href="{{ url_for('admin.gestionar_fechas') }}">Gestionar Fechas</a>
+        <a href="{{ url_for('admin.gestionar_habitaciones') }}">Gestionar Habitaciones</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="home-main">
+    <h2>Gestionar Reservaciones</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="padding: 12px;">ID</th>
+          <th style="padding: 12px;">Cliente</th>
+          <th style="padding: 12px;">Habitación</th>
+          <th style="padding: 12px;">Fecha Entrada</th>
+          <th style="padding: 12px;">Fecha Salida</th>
+          <th style="padding: 12px;">Estado</th>
+          <th style="padding: 12px;">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for reserva in reservaciones %}
+        <tr>
+          <td style="padding: 12px;">{{ reserva.id }}</td>
+          <td style="padding: 12px;">{{ reserva.nombre_cliente }}</td>
+          <td style="padding: 12px;">{{ reserva.tipo_habitacion }}</td>
+          <td style="padding: 12px;">{{ reserva.fecha_llegada.strftime('%Y-%m-%d') }}</td>
+          <td style="padding: 12px;">{{ reserva.fecha_salida.strftime('%Y-%m-%d') }}</td>
+          <td style="padding: 12px;">{{ reserva.estado }}</td>
+          <td style="padding: 12px;">
+            <a class="btn btn-edit" href="{{ url_for('admin.editar_reserva', id=reserva.id) }}">Editar</a>
+            <a class="btn btn-delete" href="{{ url_for('admin_eliminar_reserva', id=reserva.id) }}">Eliminar</a>
+
+            {% if reserva.estado|lower == 'pendiente' %}
+            <form action="{{ url_for('confirmar_reservacion', id=reserva.id) }}" method="post" style="display:inline;">
+              <button type="submit" class="btn-confirmar btn-sm">Confirmar</button>
+            </form>
+            {% endif %}
+          </td>
+        </tr>
+        {% else %}
+        <tr>
+          <td colspan="7" style="padding:12px; text-align:center;">No hay reservaciones para mostrar.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </main>
+
+  <footer>
+    <p>© 2025 Hotel Paraíso. Todos los derechos reservados.</p>
+  </footer>
+
+</body>
+</html>

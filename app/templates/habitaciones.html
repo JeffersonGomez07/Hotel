@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hotel Paraíso - Habitaciones</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/habitaciones/habitaciones.css') }}" />
+</head>
+<body>
+   <div class="usuario-links">
+        {% if session.get('usuario_id') %}
+            <a href="{{ url_for('auth.logout') }}">Cerrar sesión</a>
+        {% else %}
+            <a href="{{ url_for('auth.login') }}">Iniciar sesión</a>
+            <a href="{{ url_for('auth.registro') }}">Regístrate</a>
+        {% endif %}
+    </div>
+  <header>
+    <h1>Hotel Paraíso</h1>
+    <nav>
+  <div class="nav-izquierda">
+    <a href="{{ url_for('public.index') }}">Inicio</a>
+    <a href="{{ url_for('public.habitaciones') }}">Habitaciones</a>
+    <a href="{{ url_for('reservacion.reservaciones') }}">Reservaciones</a>
+    <a href="{{ url_for('public.servicios') }}">Servicios</a>
+    <a href="{{ url_for('public.contacto') }}">Contacto</a>
+    <a href="{{ url_for('public.nosotros') }}">Nosotros</a>
+  </div>
+
+</nav>
+  </header>
+
+  <main class="rooms-main">
+    <section class="rooms-section">
+      <h2>Nuestras Habitaciones</h2>
+      <div class="rooms-container">
+        <article class="room-card">
+    <a href="{{ url_for('public.habitacion_individual') }}">
+      <img src="{{ url_for('static', filename='images/inidividual.jpg') }}" alt="Habitación Individual" />
+      <h3>Habitación Individual</h3>
+      <p>Cómoda habitación para una persona, con baño privado, TV y Wi-Fi gratuito.</p>
+      <p class="price">Desde $50 por noche</p>
+    </a>
+    </article>
+
+    <article class="room-card">
+      <a href="{{ url_for('public.habitacion_doble') }}">
+        <img src="{{ url_for('static', filename='images/doble.avif') }}" alt="Habitación Doble" />
+        <h3>Habitación Doble</h3>
+        <p>Espaciosa habitación para dos personas, perfecta para parejas o amigos.</p>
+        <p class="price">Desde $80 por noche</p>
+      </a>
+    </article>
+
+    <article class="room-card">
+      <a href="{{ url_for('public.habitacion_suite') }}">
+        <img src="{{ url_for('static', filename='images/suite.avif') }}" alt="Suite" />
+        <h3>Suite</h3>
+        <p>Suite de lujo con sala de estar, balcón privado y vistas espectaculares.</p>
+        <p class="price">Desde $150 por noche</p>
+      </a>
+    </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Hotel Paraíso. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>

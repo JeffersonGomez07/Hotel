@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eliminar Reservación - Panel de Administración</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/eliminar_reserva.css') }}" />
+
+</head>
+<body>
+  <header>
+    <h1>Eliminar Reservación</h1>
+    <nav>
+      <a href="{{ url_for('admin.dashboard') }}">Volver al Dashboard</a>
+    </nav>
+  </header>
+
+  <main>
+    <p>¿Seguro que quieres eliminar la reservación de <strong>{{ reserva.nombre_cliente }}</strong> desde <strong>{{ reserva.fecha_llegada }}</strong> hasta <strong>{{ reserva.fecha_salida }}</strong>?</p>
+
+    <form method="POST" action="{{ url_for('admin.eliminar_reserva', id=reserva.id) }}">
+      <button type="submit" class="btn btn-delete">Confirmar Eliminación</button>
+      <a href="{{ url_for('admin.gestionar_reservas') }}" class="btn">Cancelar</a>
+    </form>
+  </main>
+</body>
+</html>

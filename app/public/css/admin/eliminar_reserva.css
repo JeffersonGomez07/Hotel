@@ -1,0 +1,70 @@
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+header nav a {
+  color: #ffb347;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 10px;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+header nav a:hover,
+header nav a:focus {
+  color: #ffe0b3;
+  outline: none;
+}
+
+/* Main container */
+main {
+  max-width: 600px;
+  margin: 40px auto;
+  background-color: white;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Texto principal */
+main p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+/* Botones */
+.btn {
+  display: inline-block;
+  padding: 10px 25px;
+  font-size: 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  margin: 0 10px;
+  transition: background-color 0.3s ease;
+  color: #004d99;
+  background-color: #e0e7f6;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: #b0c4e8;
+  outline: none;
+}
+
+.btn-delete {
+  background-color: #cc0000;
+  color: white;
+}
+
+.btn-delete:hover,
+.btn-delete:focus {
+  background-color: #990000;
+  outline: none;
+}

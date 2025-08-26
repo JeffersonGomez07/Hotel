@@ -1,0 +1,89 @@
+
+header h1 {
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  background-color: #004d99;
+  padding: 0 20px;
+}
+
+nav .nav-izquierda a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 8px 15px;
+  border-radius: 6px;
+  margin-left: 10px;
+  transition: background-color 0.3s ease;
+}
+
+nav .nav-izquierda a:first-child {
+  margin-left: 0;
+}
+
+nav a:hover, nav a:focus {
+  background-color: #ffb347;
+  color: #004d99;
+  outline: none;
+}
+
+/* Panel */
+main {
+  max-width: 1000px;
+  margin: 40px auto;
+  background-color: white;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+h2, h3 {
+  color: #004d99;
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+ul li {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+/* Botones rápidos */
+main section div a.btn {
+  display: inline-block;
+  background-color: #ffb347;
+  color: #004d99;
+  padding: 15px 25px;
+  font-weight: 700;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  margin-top: 10px;
+}
+
+main section div a.btn:hover, main section div a.btn:focus {
+  background-color: #e69c29;
+  outline: none;
+}
+
+/* Footer */
+footer {
+  background-color: #004d99;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  margin-top: 40px;
+}

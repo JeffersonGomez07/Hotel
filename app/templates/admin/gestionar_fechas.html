@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gestionar Fechas - Panel de Administración</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/gestionar_fechas.css') }}" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+  <div class="usuario-links">
+    {% if session.get('usuario_id') %}
+      <a href="{{ url_for('auth.logout') }}">Cerrar sesión</a>
+    {% else %}
+      <a href="{{ url_for('auth.login') }}">Iniciar sesión</a>
+      <a href="{{ url_for('auth.registro') }}">Regístrate</a>
+    {% endif %}
+  </div>
+
+  <header>
+    <h1>Hotel Paraíso</h1>
+    <nav>
+      <div class="nav-izquierda">
+        {% if session.get('usuario_rol') == 'admin' %}
+          <a href="{{ url_for('admin.dashboard') }}">Panel de administración</a>
+        {% endif %}
+        <a href="{{ url_for('admin.gestionar_reservas') }}">Gestionar Reservaciones</a>
+        <a href="{{ url_for('admin.gestionar_fechas') }}">Gestionar Fechas</a>
+        <a href="{{ url_for('admin.gestionar_habitaciones') }}">Gestionar Habitaciones</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main">
+    <h2>Gestionar Fechas</h2>
+
+    <p>Aquí puedes bloquear o desbloquear fechas para reservar.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="padding: 12px;">Fecha</th>
+          <th style="padding: 12px;">Motivo</th>
+          <th style="padding: 12px;">Bloqueada Por</th>
+          <th style="padding: 12px;">Fecha Registro</th>
+          <th style="padding: 12px;">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for fecha in fechas %}
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 12px;">{{ fecha.fecha.strftime('%Y-%m-%d') }}</td>
+          <td style="padding: 12px;">{{ fecha.motivo or 'Sin motivo' }}</td>
+          <td style="padding: 12px;">{{ fecha.bloqueada_por or 'Desconocido' }}</td>
+          <td style="padding: 12px;">{{ fecha.fecha_registro.strftime('%Y-%m-%d %H:%M') }}</td>
+          <td style="padding: 12px;">
+            <form method="POST" action="{{ url_for('admin.desbloquear_fecha', fecha_id=fecha.id) }}" onsubmit="return confirm('¿Deseas desbloquear esta fecha?');">
+              <button type="submit" class="btn btn-edit">Desbloquear</button>
+            </form>
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="5" style="text-align:center; padding:12px;">No hay fechas bloqueadas.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <hr>
+
+    <h3>Bloquear nueva fecha</h3>
+    <form method="POST" action="{{ url_for('admin.bloquear_fecha') }}">
+      <label for="fecha">Fecha:</label>
+      <input type="date" id="fecha" name="fecha" required />
+
+      <label for="motivo">Motivo:</label>
+      <input type="text" id="motivo" name="motivo" />
+
+      <button type="submit" class="btn btn-edit">Bloquear Fecha</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>© 2025 Hotel Paraíso. Todos los derechos reservados.</p>
+  </footer>
+
+</body>
+</html>

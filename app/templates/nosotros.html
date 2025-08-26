@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hotel Paraíso - Nosotros</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/nosotros.css') }}" />
+</head>
+<body>
+    <div class="usuario-links">
+        {% if session.get('usuario_id') %}
+            <a href="{{ url_for('auth.logout') }}">Cerrar sesión</a>
+        {% else %}
+            <a href="{{ url_for('auth.login') }}">Iniciar sesión</a>
+            <a href="{{ url_for('auth.registro') }}">Regístrate</a>
+        {% endif %}
+    </div>
+  <header>
+    <h1>Hotel Paraíso</h1>
+    <nav>
+  <div class="nav-izquierda">
+    <a href="{{ url_for('public.index') }}">Inicio</a>
+    <a href="{{ url_for('public.habitaciones') }}">Habitaciones</a>
+    <a href="{{ url_for('reservacion.reservaciones') }}">Reservaciones</a>
+    <a href="{{ url_for('public.servicios') }}">Servicios</a>
+    <a href="{{ url_for('public.contacto') }}">Contacto</a>
+    <a href="{{ url_for('public.nosotros') }}">Nosotros</a>
+  </div>
+
+</nav>
+
+  </header>
+
+  <main class="home-main">
+
+    <section class="encabezado">
+      <h2>Sobre Nosotros</h2>
+      <p>Conoce la historia, misión y visión de Hotel Paraíso</p>
+    </section>
+
+    <section class="contenido">
+      <article class="seccion">
+        <h3>Nuestra Historia</h3>
+        <p>
+          Hotel Paraíso abrió sus puertas en 2005 con el sueño de brindar una experiencia inolvidable a cada huésped.
+          Desde entonces, hemos crecido hasta convertirnos en un referente de hospitalidad en la región.
+        </p>
+      </article>
+
+      <article class="seccion">
+        <h3>Misión</h3>
+        <p>
+          Ofrecer un servicio de alta calidad que garantice comodidad, descanso y una atención personalizada,
+          haciendo sentir a cada huésped como en casa.
+        </p>
+      </article>
+
+      <article class="seccion">
+        <h3>Visión</h3>
+        <p>
+          Ser reconocidos como el hotel preferido por viajeros nacionales e internacionales,
+          destacando por nuestra excelencia, calidez humana y compromiso con el turismo sostenible.
+        </p>
+      </article>
+
+      <article class="seccion">
+        <h3>Nuestro Equipo</h3>
+        <p>
+          Contamos con un equipo profesional y apasionado por el servicio, siempre dispuesto a brindar lo mejor
+          de sí para que tu estadía sea perfecta.
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Hotel Paraíso. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+</body>
+</html>

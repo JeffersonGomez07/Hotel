@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hotel Paraíso - Reservaciones</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/reservaciones.css') }}" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+</head>
+<body>
+   <div class="usuario-links">
+        {% if session.get('usuario_id') %}
+            <a href="{{ url_for('auth.logout') }}">Cerrar sesión</a>
+        {% else %}
+            <a href="{{ url_for('auth.login') }}">Iniciar sesión</a>
+            <a href="{{ url_for('auth.registro') }}">Regístrate</a>
+        {% endif %}
+    </div>
+  <header>
+    <h1>Hotel Paraíso</h1>
+    <nav>
+  <div class="nav-izquierda">
+    <a href="{{ url_for('public.index') }}">Inicio</a>
+    <a href="{{ url_for('public.habitaciones') }}">Habitaciones</a>
+    <a href="{{ url_for('reservacion.reservaciones') }}">Reservaciones</a>
+    <a href="{{ url_for('public.servicios') }}">Servicios</a>
+    <a href="{{ url_for('public.contacto') }}">Contacto</a>
+    <a href="{{ url_for('public.nosotros') }}">Nosotros</a>
+  </div>
+
+</nav>
+  </header>
+
+  <main class="reservation-main">
+    <section class="reservation-section">
+      <h2>Reserva tu estancia</h2>
+
+      <form id="reservacionForm">
+        <label for="nombre">Nombre completo</label>
+        <input type="text" id="nombre" name="nombre" />
+
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" name="email" />
+
+        <label for="checkin">Fecha de llegada</label>
+        <input type="date" id="checkin" name="checkin" />
+
+        <label for="checkout">Fecha de salida</label>
+        <input type="date" id="checkout" name="checkout"  />
+
+        <label for="habitacion">Tipo de habitación</label>
+        <select id="habitacion" name="habitacion" >
+          <option value="">Seleccione...</option>
+          <option value="individual">Individual</option>
+          <option value="doble">Doble</option>
+          <option value="suite">Suite</option>
+        </select>
+
+        <label for="adultos">Adultos</label>
+        <input type="number" id="adultos" name="adultos" min="1" max="10" value="1"  />
+
+        <label for="ninos">Niños</label>
+        <input type="number" id="ninos" name="ninos" min="0" max="10" value="0" />
+
+        <button id="reservar" type="submit">Hacer reservación</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Hotel Paraíso. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- Tu script que procesa flash messages y maneja el form -->
+  <script src="{{ url_for('static', filename='js/reservaciones.js') }}"></script>
+</body>
+</html>

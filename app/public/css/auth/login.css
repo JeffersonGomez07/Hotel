@@ -1,0 +1,101 @@
+/* Contenedor principal del formulario */
+.login-container {
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 30px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Título */
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #004d99;
+}
+
+/* Grupos del formulario */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.form-group input:focus {
+  border-color: #004d99;
+  outline: none;
+}
+
+/* Botón de inicio de sesión */
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #004d99;
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #003366;
+}
+
+/* Pie del formulario con enlaces */
+.login-footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.login-footer a {
+  color: #004d99;
+  text-decoration: underline;
+}
+
+.login-footer a:hover {
+  color: #ffb347;
+}
+
+/* Contenedor de enlaces fijos arriba a la derecha */
+.login-links-fixed {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  z-index: 1000;
+}
+
+/* Estilo individual de cada enlace */
+.login-link {
+  background-color: #ffb347;
+  color: #004d99;
+  padding: 8px 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.login-link:hover {
+  background-color: #e69c29;
+  color: white;
+}

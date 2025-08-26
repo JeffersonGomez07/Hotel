@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}Gestionar Habitaciones - Panel de Administración{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/gestionar_habitaciones.css') }}" />
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+  <!-- Usuario links arriba derecha -->
+  <div class="usuario-links">
+    {% if session.get('usuario_id') %}
+      <a href="{{ url_for('auth.logout') }}">Cerrar sesión</a>
+    {% else %}
+      <a href="{{ url_for('auth.login') }}">Iniciar sesión</a>
+      <a href="{{ url_for('auth.registro') }}">Regístrate</a>
+    {% endif %}
+  </div>
+
+  <header>
+    <h1>Hotel Paraíso</h1>
+    <nav>
+      <div class="nav-izquierda">
+        {% if session.get('usuario_rol') == 'admin' %}
+          <a href="{{ url_for('admin.dashboard') }}">Panel de administración</a>
+        {% endif %}
+        <a href="{{ url_for('admin.gestionar_reservas') }}">Gestionar Reservaciones</a>
+        <a href="{{ url_for('admin.gestionar_fechas') }}">Gestionar Fechas</a>
+        <a href="{{ url_for('admin.gestionar_habitaciones') }}">Gestionar Habitaciones</a>
+      
+      </div>
+    </nav>
+  </header>
+
+  <main class="home-main">
+    <h2>Gestionar Habitaciones</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="padding: 12px;">ID</th>
+          <th style="padding: 12px;">Tipo</th>
+          <th style="padding: 12px;">Precio</th>
+          <th style="padding: 12px;">Descripción</th>
+          <th style="padding: 12px;">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for habitacion in habitaciones %}
+        <tr>
+          <td style="padding: 12px;">{{ habitacion.id }}</td>
+          <td style="padding: 12px;">{{ habitacion.tipoHabitacion }}</td>
+          <td style="padding: 12px;">${{ habitacion.precio }}</td>
+          <td style="padding: 12px;">{{ habitacion.descripcion }}</td>
+          <td style="padding: 12px;">
+            <a class="btn btn-edit" href="{{ url_for('admin_editar_habitaciones', id=habitacion.id) }}">Editar</a>
+            <a class="btn btn-delete" href="{{ url_for('admin_eliminar_habitacion', id=habitacion.id) }}">Eliminar</a>
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="5">No hay habitaciones para mostrar.</td></tr>
+        {% endfor %}
+      </tbody>
+      
+    </table>
+
+    
+  </main>
+  <footer>
+    <p>© 2025 Hotel Paraíso. Todos los derechos reservados.</p>
+  </footer>
+
+</body>
+</html>

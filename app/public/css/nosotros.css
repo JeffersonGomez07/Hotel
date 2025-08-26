@@ -1,0 +1,46 @@
+/* Encabezado exclusivo de la página Nosotros */
+.encabezado h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.encabezado p {
+  font-size: 1.2rem;
+}
+
+/* Contenido principal de la página Nosotros */
+.contenido {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.seccion {
+  background-color: #ffffff;
+  padding: 25px;
+  margin-bottom: 30px;
+  border-left: 5px solid #004d99;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border-radius: 8px;
+}
+
+.seccion h2 {
+  color: #004d99;
+  margin-bottom: 10px;
+  font-size: 1.6rem;
+}
+
+.seccion p {
+  font-size: 1.05rem;
+}
+
+/* Footer (refuerza el estilo si se accede sin index.css) */
+.pie-pagina {
+  background-color: #004d99;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0.9rem;
+  margin-top: 40px;
+  width: 100%;
+}
