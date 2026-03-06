@@ -20,7 +20,7 @@ reservaciones_app/
 ├── database/
 │   └── schema.sql          # Script SQL para crear las tablas de la base de datos
 │
-├── run.py                  # Punto de entrada: corre la aplicación Flask
+├── app.py                  # Punto de entrada: corre la aplicación Flask
 └── requirements.txt        # Lista de dependencias de Python (Flask, etc.)
 
 Models: define la estrcutura estructura de los datos de la app y como se guardan en la BD.
