@@ -1,5 +1,7 @@
-from app import app
+from flask import Flask
 
-if __name__ == '__main__': # Punto de entrada de la aplicación
-    app.run(debug=True) # Ejecuta la aplicación Flask en modo de depuración
+app = Flask(__name__)
 
+@app.route('/')
+def home():
+    return "Hola, hotel!"
