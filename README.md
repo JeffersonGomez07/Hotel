@@ -21,31 +21,34 @@ SQL
 
 SQLAlchemy
 
-Estructura del proyecto
+## Estructura del Proyecto
+
+```
 reservaciones_app/
 │
-├── app/                    # Carpeta principal de la aplicación Flask
+├── app/                        # Carpeta principal de la aplicación Flask
 │
-│   ├── static/             # Archivos estáticos
-│   │   ├── css/            # Estilos personalizados
-│   │   └── js/             # JavaScript del lado del cliente
-│
-│   ├── templates/          # Plantillas HTML renderizadas por Flask
-│   │   ├── base.html
-│   │   ├── login.html
-│   │   ├── dashboard.html
-│   │   └── reservar.html
-│
-│   ├── __init__.py         # Inicializa la aplicación Flask
-│   ├── routes.py           # Definición de las rutas/endpoints
-│   ├── models.py           # Modelos de base de datos con SQLAlchemy
-│   └── forms.py            # Formularios usando Flask-WTF
+│   ├── static/                 # Archivos estáticos
+│   │   ├── css/                # Estilos personalizados
+│   │   └── js/                 # Archivos JavaScript del lado cliente
+│   │
+│   ├── templates/              # Plantillas HTML renderizadas por Flask
+│   │   ├── base.html           # Plantilla base
+│   │   ├── login.html          # Página de inicio de sesión
+│   │   ├── dashboard.html      # Panel principal
+│   │   └── reservar.html       # Formulario de reservación
+│   │
+│   ├── __init__.py             # Inicialización de la aplicación Flask
+│   ├── routes.py               # Definición de rutas del sistema
+│   ├── models.py               # Modelos de base de datos (SQLAlchemy)
+│   └── forms.py                # Formularios con Flask-WTF
 │
 ├── database/
-│   └── schema.sql          # Script para crear las tablas en la base de datos
+│   └── schema.sql              # Script SQL para crear las tablas
 │
-├── run.py                  # Punto de entrada para ejecutar la aplicación
-└── requirements.txt        # Dependencias del proyecto
+├── run.py                      # Archivo principal para ejecutar la aplicación
+└── requirements.txt            # Dependencias del proyecto
+```
 Modelos de Datos
 
 Los modelos definen la estructura de los datos y cómo se almacenan en la base de datos.
